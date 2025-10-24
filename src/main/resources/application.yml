@@ -1,0 +1,51 @@
+spring:
+  profiles:
+    active: prod
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  datasource:
+    url: jdbc:h2:mem:ordersdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop   # Crea y elimina la BD al iniciar y cerrar la app
+    show-sql: true            # Muestra las consultas SQL en consola
+    properties:
+      hibernate:
+        format_sql: true      # Formatea el SQL para lectura más clara
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console       # Acceso desde: http://localhost:8080/h2-console
+
+server:
+  port: 8081
+  error:
+    include-message: always   # Muestra mensajes de error útiles en desarrollo
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+  datasource:
+    url: jdbc:postgresql://localhost:5434/orders
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+server:
+  port: 8081

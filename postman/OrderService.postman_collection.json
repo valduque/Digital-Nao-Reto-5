@@ -1,0 +1,186 @@
+{
+  "info": {
+    "name": "RETO5 - Orders API",
+    "_postman_id": "d1f9b2b0-0000-4000-8000-000000000000",
+    "description": "Colección para probar endpoints CRUD de Orders (Spring Boot). Base URL: http://localhost:8081/api/orders",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Order",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"type\": \"ONLINE\",\n  \"products\": [\"product-A\", \"product-B\"],\n  \"date\": \"2025-10-23\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/orders",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "orders"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status is 200 or 201\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200,201]);",
+              "});",
+              "",
+              "// Save id to environment variable orderId if present in response",
+              "try {",
+              "  var json = pm.response.json();",
+              "  if (json && json.id) {",
+              "    pm.environment.set('orderId', json.id);",
+              "    console.log('orderId saved:', json.id);",
+              "  } else {",
+              "    // some controllers might return the entity wrapped or different shape",
+              "    // try to find id in response body",
+              "    if (json && json.data && json.data.id) {",
+              "      pm.environment.set('orderId', json.data.id);",
+              "    }",
+              "  }",
+              "} catch (e) { console.log('No JSON response or cannot parse'); }"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Get All Orders",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/api/orders",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "orders"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Order by Id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/api/orders/{{orderId}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "orders",
+            "{{orderId}}"
+          ],
+          "variable": [
+            {
+              "key": "orderId",
+              "value": ""
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Order",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"type\": \"PICKUP\",\n  \"products\": [\"product-A\", \"product-C\", \"product-D\"],\n  \"date\": \"2025-10-24\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/orders/{{orderId}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "orders",
+            "{{orderId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Order",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/api/orders/{{orderId}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "orders",
+            "{{orderId}}"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "exec": [],
+        "type": "text/javascript"
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8081/api/orders",
+      "type": "string"
+    },
+    {
+      "key": "orderId",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}
