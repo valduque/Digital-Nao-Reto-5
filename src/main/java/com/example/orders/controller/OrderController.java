@@ -2,6 +2,9 @@ package com.example.orders.controller;
 
 import com.example.orders.dto.OrderDTO;
 import com.example.orders.service.OrderService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,6 +43,11 @@ public class OrderController {
      *
      * @return a list of {@link OrderDTO} representing all orders in the database
      */
+    @Operation(summary="Get all orders", description="Brings back orders for a specific user")
+    @ApiResponses(value ={
+            @ApiResponse(responseCode = "200", description = "Orders brought successfully")
+    })
+
     @GetMapping
     public List<OrderDTO> getAllOrders() {
         return service.findAll();
@@ -51,6 +59,11 @@ public class OrderController {
      * @param id the ID of the order to retrieve
      * @return {@link ResponseEntity} containing the order if found, or 404 if not found
      */
+
+    @Operation(summary="Get an order", description="Gets an order for a specific user")
+    @ApiResponses(value ={
+            @ApiResponse(responseCode = "204", description = "Order retrieved successfully")
+    })
     @GetMapping("/{id}")
     public ResponseEntity<OrderDTO> getOrder(@PathVariable Long id) {
         OrderDTO dto = service.findById(id);
@@ -63,6 +76,13 @@ public class OrderController {
      * @param dto the order data to create, validated using {@link Valid}
      * @return {@link ResponseEntity} containing the created {@link OrderDTO}
      */
+
+    @Operation(summary="Create a new order", description="Creates a new order for a specific user")
+        @ApiResponses(value ={
+                @ApiResponse(responseCode = "201", description = "Order created successfully")
+        })
+
+
     @PostMapping
     public ResponseEntity<OrderDTO> createOrder(@Valid @RequestBody OrderDTO dto) {
         return ResponseEntity.ok(service.create(dto));
@@ -75,6 +95,11 @@ public class OrderController {
      * @param dto the updated order data, validated using {@link Valid}
      * @return {@link ResponseEntity} containing the updated {@link OrderDTO}, or 404 if not found
      */
+
+    @Operation(summary="Update an order", description="Updates an order for a specific user")
+    @ApiResponses(value ={
+            @ApiResponse(responseCode = "204", description = "Order updated successfully")
+    })
     @PutMapping("/{id}")
     public ResponseEntity<OrderDTO> updateOrder(@PathVariable Long id, @Valid @RequestBody OrderDTO dto) {
         OrderDTO updated = service.update(id, dto);
@@ -87,6 +112,11 @@ public class OrderController {
      * @param id the ID of the order to delete
      * @return {@link ResponseEntity} with status 204 (No Content)
      */
+
+    @Operation(summary="Delete an order", description="Deletes an order for a specific user")
+    @ApiResponses(value ={
+            @ApiResponse(responseCode = "204", description = "Order deleted successfully")
+    })
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteOrder(@PathVariable Long id) {
         service.delete(id);
