@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf0c678c-af0d-4d3c-91f4-a45301bdbdb3" name="Changes" comment="">
+    <list default="true" id="cf0c678c-af0d-4d3c-91f4-a45301bdbdb3" name="Changes" comment="feat: &quot;Swagger Documentation has been added&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/orders/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/orders/controller/OrderController.java" afterDir="false" />
@@ -80,6 +80,30 @@
       <option name="presentableId" value="Default" />
       <updated>1761242134140</updated>
     </task>
+    <task id="LOCAL-00001" summary="feat: &quot;Swagger Documentation has been added&quot;">
+      <option name="closed" value="true" />
+      <created>1761761129542</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1761761129542</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: &quot;Swagger Documentation has been added&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: &quot;Swagger Documentation has been added&quot;" />
   </component>
 </project>
