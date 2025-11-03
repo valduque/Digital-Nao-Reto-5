@@ -53,7 +53,7 @@ Copiar código
 - Git
 
 ### 2️⃣ Clone the Repository
-```bash
+
 git clone https://github.com/<your-username>/<repo-name>.git
 cd <repo-name>
 3️⃣ Choose Environment Profile
@@ -75,18 +75,25 @@ application-prod.yml
 
 Use system environment variables for sensitive data, e.g.:
 
-bash
-Copiar código
 export DB_URL=jdbc:postgresql://localhost:5432/orders_db
+<br>
 export DB_USERNAME=admin
+<br>
 export DB_PASSWORD=securepassword
+
 🧩 API Endpoints
 Method	Endpoint	Description
+<br>
 POST	/api/orders	Create a new order
+<br>
 GET	/api/orders	Get all orders
+<br>
 GET	/api/orders/{id}	Get order by ID
+<br>
 PUT	/api/orders/{id}	Update an order
+<br>
 DELETE	/api/orders/{id}	Delete an order
+<br>
 
 You can test all endpoints using the Postman Collection included in the repository (postman_collection.json).
 
@@ -96,10 +103,9 @@ Once the app is running, access Swagger UI at:
 
 🧪 Testing
 Run unit and integration tests with:
-
-bash
-Copiar código
+<br>
 mvn test
+
 The test suite covers:
 
 ✅ Successful API responses
@@ -113,8 +119,6 @@ A startup script (start.sh or start.bat) is included to automate environment set
 
 Usage:
 
-bash
-Copiar código
 ./start.sh
 🧾 Documentation & Decisions
 All key team decisions and technical changes are documented in the /docs folder to support learning and transparency.
